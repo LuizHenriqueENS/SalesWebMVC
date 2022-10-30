@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using SalesWebMVC.Models;
 using SalesWebMVC.Data;
+using SalesWebMVC.Services;
 
 namespace SalesWebMVC
 {
@@ -42,6 +43,7 @@ namespace SalesWebMVC
                     builder => builder.MigrationsAssembly("SalesWebMVC")));
 
             services.AddScoped<SeedingServices>();
+            services.AddScoped<VendedoresService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
