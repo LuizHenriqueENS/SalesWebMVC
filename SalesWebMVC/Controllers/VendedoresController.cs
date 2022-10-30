@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SalesWebMVC.Models;
 using SalesWebMVC.Services;
 using System;
 using System.Collections.Generic;
@@ -21,5 +22,19 @@ namespace SalesWebMVC.Controllers
             var list = _vendedoresService.EncontrarTodos();
             return View(list);
         }
+
+        public IActionResult Criar()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Criar(Vendedor vendedor)
+        {
+            _vendedoresService.Inserir(vendedor);
+            return RedirectToAction(nameof(Index));
+        }
+
     }
 }
